@@ -71,6 +71,16 @@ const urlsToCache = [
     "/chat/style.css",  // Add paths to your JS
     "/images/logo.png", // Add paths to your images
 ];
+console.log('Service Worker installing...');
+self.addEventListener('install', (event) => {
+    console.log('Service Worker installed');
+    // ... caching logic
+});
+
+self.addEventListener('activate', (event) => {
+    console.log('Service Worker activated');
+});
+
 
 // Install the service worker and cache files
 self.addEventListener("install", (event) => {
