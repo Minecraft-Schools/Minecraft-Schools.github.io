@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="/img/logo.png" type="image/x-icon">
+    <meta charset="utf-8"/>
+    <title>Tetris</title>
+    <style>
+        body {
+            display: flex;
+            background-image: url('/img/efa4a21f5ea5834cbbb1b30bc94eb17c.jpg');
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+            color: #fff;
+            font-family: sans-serif;
+            font-size: 2em;
+			margin:20px;
+            text-align: center;
+        }
+
+        .player {
+            flex: 1 1 auto;
+        }
+
+        canvas {
+            border: 2px solid red;
+            height: 75vh;
+        }
+	
+			.player {
+				display: inline-block;
+				margin: 10px;
+				font-weight: bolder;
+			
+			}
+		
+			input {
+				padding: 5px;
+				margin-bottom: 5px;
+				background-color: #f1f1f1;
+				color: #333;
+				padding: 5px;
+			}
+		
+			.score {
+				
+				color: #fff3f3;
+				padding: 5px;
+			}
+		
+			.tetris {
+				margin-top: 10px;
+			}
+		
+			input{
+				width: 200px;
+				height: 30px;
+				font-weight: bolder;
+				font-size:30px;
+			}
+			button{
+				width: 70px;
+				height: 60px;
+				display: inline-block;
+				position: relative;
+				font-weight: bolder;
+				font-size:20px;
+			}
+	
+    </style>
+</head>
+<body>
+	<button onclick="goToMenu()">Menu</button>
+<!-- 
+	<label for="player1Name"> Player 1</label>
+    <div class="player">
+        <input type="text" id="player1Name" placeholder="Enter Player 1's Name">
+        <div class="score"></div>
+        <canvas class="tetris" width="240" height="400"></canvas>
+    </div> -->
+	<!-- <label for="player2Name"> Player 2</label>
+    <div class="player">
+        <input type="text" id="player2Name" placeholder="Enter Player 2's Name">
+        <div class="score"></div>
+        <canvas class="tetris" width="240" height="400"></canvas>
+    </div> -->
+	
+	<div class="player" >
+		<label for="textInput">Player 1</label>
+			<input type="text" id="textInput">
+			<button  onclick="saveText()" height="80px" width="40px" >Save</button>
+			<div class="score"></div>
+			<canvas class="tetris" width="240" height="400"></canvas>
+			<div id="displayText"></div>
+			<div id="score"></div>
+			
+	</div>
+
+
+
+	<div id="keyboarOutput"></div>
+	<div class="player" >
+		<label for="textInput">Player 2</label>
+			<input type="text" id="textInput1">
+			<button  onclick="saveText1()" height="40px" width="40px" >Save</button>
+			<div class="score"><span id="scoreValue">0</span></div>
+			<canvas class="tetris" width="240" height="400"></canvas>
+			<div id="displayText1"></div>
+			
+	</div>
+	
+	<!-- for name only -->
+			
+
+
+
+    <script src="pieceFactory.js"></script>
+    <script src="arena.js"></script>
+    <script src="player.js"></script>
+    <script src="tetris.js"></script>
+    <script src="main.js"></script>
+	<script src="save.js"></script>
+
+
+
+			
+	<!-- Payer 1 save name -->
+
+		<script>
+			document.getElementById('displayText').innerText = localStorage.getItem('saveText') || '';
+
+
+			function saveText(){
+				const inputText = document.getElementById("textInput").value;
+				localStorage.setItem('saveText', inputText);
+				document.getElementById("textInput").innerText = inputText;
+				location.reload();
+			}
+
+
+				function loadSaveText(){
+					const saveText = localStorage.getItem('saveText');
+					if(saveText){
+						document.getElementById("saveText").value = saveText;
+					}
+				}
+
+
+
+				document.addEventListener('keydown', function(even){
+					const key = event.key;
+					displayPressedKey(key); 
+				});
+
+				function displayPressedKey(key) {
+					const keyboarOutput = document.getElementById('keyboarOutput');
+					keyboarOutput.innerText = '' + key;
+				}
+		</script>
+
+				
+	<!-- Payer 2 save name -->
+		<script>
+			document.getElementById('displayText1').innerText = localStorage.getItem('saveText1') || '';
+
+
+				function saveText1(){
+					const inputText = document.getElementById("textInput1").value;
+					localStorage.setItem('saveText1', inputText);
+					document.getElementById("textInput1").innerText = inputText;
+					location.reload();
+				}
+
+
+				
+			
+		</script>
+		
+		<script>
+
+			document.getElementById('displayScore').innerText = localStorage.getItem('score') || '';
+			function goToMenu(){
+				window.location.href ='/new.html'
+			}
+		</script>
+
+
+
+
+		<!-- <script>
+			
+			let player2Score =0;
+
+			function saveTextAndScore(){
+				const textInput = document.getElementById("textInput1").value;
+				localStorage.setItem("savedText1", textInput);
+
+				saveScore();
+			}
+
+			function saveScore(){
+				const scoreElement = document.querySelector(".score spam");
+				player2Score = parseInt('savedScore1', player2Score);
+				localStorage.setItem("savedScore2", player2Score);
+			}
+
+			function loadTextAndScore(){
+				const saveText1 = localStorage.getItem("savedText1");
+				const savedScore1 = localStorage.getItem("savedScore1");
+
+				if(saveText1){
+					document.getElementById('textInput1').value = saveText1;
+				}
+				if(saveScore1){
+					player2Score = parseInt(savedScore1);
+					document.getElementById('scoreValue').innerText = player2Score + " Score
+				}
+			}
+			window.onload=function(){
+				loadTextAndScore();
+			}
+
+
+
+		</script> -->
+
+
+</body>
+</html>
