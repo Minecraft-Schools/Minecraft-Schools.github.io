@@ -1,0 +1,148 @@
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Space Invaders</title>
+</head>
+<style>
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 14px;
+    background-color: black;
+  }
+</style>
+
+<!-- audio button -->
+<div id="audioButton" style="position: relative">
+  <img
+    style="
+      cursor: pointer;
+      position: absolute;
+      z-index: 30;
+      height: 30px;
+      top: 30px;
+      right: 40px;
+      margin: 0;
+    "
+    id="audioIcon"
+    src="./img/volumeon.png"
+    alt="Audio Button"
+  />
+
+  <!-- score -->
+  <div style="position: relative" id="parentDiv">
+    <p
+      id="scoreContainer"
+      style="
+        position: absolute;
+        z-index: 10;
+        color: white;
+        left: 10px;
+        top: 10px;
+        margin: 0;
+        display: none;
+      "
+    >
+      <span>Score:</span><span id="scoreEl">0</span>
+    </p>
+    <canvas></canvas>
+
+    <!-- start screen background -->
+    <div
+      id="startScreen"
+      style="
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: url('./img/startScreenBackground.png');
+        z-index: 20;
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <div style="text-align: center">
+        <h1 style="color: white">Space Invaders</h1>
+
+        <!-- start button -->
+        <div
+          id="startButton"
+          style="cursor: pointer; position: relative; display: inline-block"
+        >
+          <img src="./img/button.png" alt="Start Button" />
+          <span
+            style="
+              position: absolute;
+              color: white;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              left: 50%;
+            "
+            >Start</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- restart screen background -->
+    <div
+      id="restartScreen"
+      style="
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: url('./img/startScreenBackground.png');
+        z-index: 20;
+        background-size: contain;
+        background-repeat: no-repeat;
+        display: none;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <div style="text-align: center">
+        <h1 style="color: white; font-size: 24px">Game Over</h1>
+        <h1 id="finalScore" style="color: white; margin: 0; font-size: 48px">
+          300
+        </h1>
+        <p style="color: white; margin-top: 0">Points</p>
+
+        <!-- start button -->
+        <div
+          id="restartButton"
+          style="cursor: pointer; position: relative; display: inline-block"
+        >
+          <img src="./img/button.png" alt="Restart Button" />
+          <span
+            style="
+              position: absolute;
+              color: white;
+              top: 50%;
+              transform: translate(-50%, -50%);
+              left: 50%;
+            "
+            >Restart</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="./js/util.js"></script>
+<script src="./js/classes/grid.js"></script>
+<script src="./js/classes/invader.js"></script>
+<script src="./js/classes/invaderprojectile.js"></script>
+<script src="./js/classes/particle.js"></script>
+<script src="./js/classes/player.js"></script>
+<script src="./js/classes/projectile.js"></script>
+<script src="./index.js"></script>
